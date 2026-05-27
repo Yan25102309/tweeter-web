@@ -5,7 +5,7 @@ import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import '../models/tweet.dart';
 
 class TweetService {
-  final String baseUrl = 'http://localhost:8080/api';
+  final String baseUrl = 'https://tweeter-backend-f9va.onrender.com';
   final _storage = const FlutterSecureStorage();
 
   // Método auxiliar nativo y seguro para Web para obtener el token y depurar
