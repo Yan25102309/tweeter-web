@@ -1,18 +1,17 @@
-# Usamos la imagen oficial de CirrusCI desde Docker Hub
+# Usamos la imagen oficial
 FROM cirrusci/flutter:stable AS build
 
-# Aseguramos que flutter esté actualizado a la última versión estable
-RUN flutter channel stable && flutter upgrade
-
+# Copiamos los archivos
 COPY . /app
 WORKDIR /app
 
-# Ajuste de permisos
+# Ajustamos permisos y compilamos directamente
 RUN chown -R flutter:flutter /app
 USER flutter
 
-# Construye la aplicación
-RUN flutter pub get && flutter build web --release
+# Esto instalará las dependencias necesarias y compilará
+RUN flutter pub get
+RUN flutter build web --release
 
 # Etapa de servidor (Nginx)
 FROM nginx:alpine
