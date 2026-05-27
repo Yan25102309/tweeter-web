@@ -4,7 +4,7 @@ import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
 class AuthService {
   // Configuración apuntando al servidor local de tu computadora
-  final String baseUrl = "http://localhost:8080/api/auth";
+  final String baseUrl = "https://tweeter-backend-f9va.onrender.com";
   
   final _storage = const FlutterSecureStorage();
 
