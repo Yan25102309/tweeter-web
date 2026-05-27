@@ -1,16 +1,18 @@
-# Usa la etiqueta 'latest' para asegurar que tenemos una versión moderna de Flutter
-FROM ghcr.io/cirrusci/flutter:latest AS build
+# Usamos la imagen oficial de CirrusCI desde Docker Hub
+FROM cirrusci/flutter:stable AS build
+
+# Aseguramos que flutter esté actualizado a la última versión estable
+RUN flutter channel stable && flutter upgrade
 
 COPY . /app
 WORKDIR /app
 
-# Esto asegura que los permisos sean correctos
+# Ajuste de permisos
 RUN chown -R flutter:flutter /app
-
 USER flutter
 
 # Construye la aplicación
-RUN flutter build web --release
+RUN flutter pub get && flutter build web --release
 
 # Etapa de servidor (Nginx)
 FROM nginx:alpine
