@@ -7,7 +7,8 @@ RUN apt-get update && apt-get install -y \
     && rm -rf /var/lib/apt/lists/*
 
 # 3. Descargamos e instalamos Flutter SDK (Versión 3.19.0)
-RUN curl -o flutter.tar.xz https://storage.googleapis.com/flutter_infra_release/releases/stable/linux/flutter_linux_3.19.0-stable.tar.xz \
+# Cambia la línea 9 (aprox) por esta:
+RUN curl -o flutter.tar.xz https://storage.googleapis.com/flutter_infra_release/releases/stable/linux/flutter_linux_3.24.0-stable.tar.xz \
     && tar xf flutter.tar.xz -C /opt \
     && rm flutter.tar.xz
 
